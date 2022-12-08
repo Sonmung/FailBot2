@@ -44,7 +44,7 @@ async function main() {
   }
   main();
 
-client.on('interactionCreate', async(interaction) => {
+client.on(Events.InteractionCreate, async(interaction) => {
   if(!interaction.isChatInputCommand()) return;
 
   // ai img
@@ -52,12 +52,12 @@ client.on('interactionCreate', async(interaction) => {
     await interaction.deferReply();
     try {
        let txt = interaction.options.getString('request')
-       let res = await openai.createImage({
+       let result = await openai.createImage({
          prompt: txt,
          n: 1,
          size: '512x512'
        })
-       let imageUrl = res.data.data[0].url;
+       let imageUrl = result.data.data[0].url;
       await interaction.editReply(`${txt} ${imageUrl}`)
     } catch (error) {
       console.log('error');
