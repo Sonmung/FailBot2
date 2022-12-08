@@ -2,7 +2,6 @@ require('dotenv').config();
 const express = require('express');
 const { REST, Client, Routes, GatewayIntentBits, InteractionCollector } = require('discord.js');
 const app = express();
-const axios = require('axios');
 const TOKEN = process.env.TOKEN;
 const CLIENT_ID = process.env.CLIENT_ID;
 const GUILD_ID = process.env.GUILD_ID;
@@ -45,7 +44,7 @@ async function main() {
   }
   main();
 
-client.on('interactionCreate', async (interaction) => {
+client.on('interactionCreate', async(interaction) => {
   if(!interaction.isChatInputCommand()) return;
 
   // ai img
@@ -58,7 +57,7 @@ client.on('interactionCreate', async (interaction) => {
         size: '512x512'
       })
       let imageUrl = res.data.data[0].url;
-      await interaction.reply(`${txt} ${imageUrl}`)
+      await interaction.reply(`${txt}`)
     } catch (error) {
       console.log('error');
       await interaction.reply('Image could not be generated')
