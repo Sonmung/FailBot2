@@ -31,6 +31,10 @@ const commands = [
         required: true,
       }
     ]
+  },
+  {
+    name: 'ping',
+    description: 'get ponged!'
   }
 ]
 
@@ -65,6 +69,9 @@ client.on("interactionCreate", async(interaction) => {
       await interaction.editReply('Image could not be generated')
     }
     
+  }
+  if(interaction.commandName === 'ping'){
+    await interaction.reply('pong');
   }
 })
 
