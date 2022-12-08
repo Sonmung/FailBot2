@@ -52,13 +52,12 @@ client.on('interactionCreate', async (interaction) => {
   if(interaction.commandName === 'img'){
     let txt = interaction.options.getString('request')
     try {
-      const res = await openai.createImage({
+      let res = await openai.createImage({
         prompt: txt,
         n: 1,
         size: '512x512'
       })
-      const imageUrl = res.data.data[0].url;
-      console.log(imageUrl)
+      let imageUrl = res.data.data[0].url;
       await interaction.reply(`${txt} ${imageUrl}`)
     } catch (error) {
       console.log('error');
