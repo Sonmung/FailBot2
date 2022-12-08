@@ -41,7 +41,7 @@ async function main() {
   }
   main();
 
-client.on('interactionCreate', async (interation) => {
+client.on('interactionCreate', async (interaction) => {
   if(!interaction.isChatInputCommand()) return;
 
   // ai img
