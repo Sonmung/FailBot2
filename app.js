@@ -49,8 +49,8 @@ client.on('interactionCreate', async(interaction) => {
 
   // ai img
   if(interaction.commandName === 'img'){
-    let txt = interaction.options.getString('request')
     try {
+      let txt = interaction.options.getString('request')
       let res = await openai.createImage({
         prompt: txt,
         n: 1,
