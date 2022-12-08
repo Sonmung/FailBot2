@@ -12,8 +12,6 @@ const { Configuration, OpenAIApi } = require("openai");
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_KEY,
 })
-
-
 const openai = new OpenAIApi(configuration);
 client.on('ready', () => {
   console.log(`${client.user.tag} is online` )
@@ -60,7 +58,8 @@ client.on('interactionCreate', async (interaction) => {
         size: '512x512'
       })
       const imageUrl = res.data.data[0].url;
-      await interaction.reply(imageUrl)
+      console.log(imageUrl)
+      await interaction.reply(`${txt} ${imageUrl}`)
     } catch (error) {
       console.log('error');
       await interaction.reply('Image could not be generated')
