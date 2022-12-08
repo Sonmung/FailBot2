@@ -42,12 +42,12 @@ async function main() {
   main();
 
 client.on('interactionCreate', async (interation) => {
-  if(!interation.isChatInputCommand()) return;
+  if(!interaction.isChatInputCommand()) return;
 
   // ai img
   if(interaction.commandName === 'img'){
     let txt = interaction.options.getString('query')
-    await interation.reply(txt)
+    await interaction.reply(txt)
   }
 })
 
