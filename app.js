@@ -49,8 +49,8 @@ client.on('interactionCreate', async(interaction) => {
 
   // ai img
   if(interaction.commandName === 'img'){
+    await interaction.deferReply();
     try {
-      await interaction.deferReply();
        let txt = interaction.options.getString('request')
        let res = await openai.createImage({
          prompt: txt,
@@ -61,7 +61,7 @@ client.on('interactionCreate', async(interaction) => {
       await interaction.editReply(`${txt} ${imageUrl}`)
     } catch (error) {
       console.log('error');
-      await interaction.reply('Image could not be generated')
+      await interaction.editReply('Image could not be generated')
     }
     
   }
