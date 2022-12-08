@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const { REST, Client, Routes, GatewayIntentBits } = require('discord.js');
+const { REST, Client, Routes, GatewayIntentBits, InteractionCollector } = require('discord.js');
 const app = express();
 const TOKEN = process.env.TOKEN;
 const CLIENT_ID = process.env.CLIENT_ID;
@@ -40,6 +40,16 @@ async function main() {
     }
   }
   main();
+
+client.on('interactionCreate', async (interation) => {
+  if(!interation.isChatInputCommand()) return;
+
+  // ai img
+  if(interaction.commandName === 'img'){
+    let txt = interaction.options.getString('query')
+    await interation.reply(txt)
+  }
+})
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT)
