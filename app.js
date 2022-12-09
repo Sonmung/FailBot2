@@ -9,7 +9,7 @@ const rest = new REST({ version: '10' }).setToken(TOKEN)
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 const { Configuration, OpenAIApi } = require("openai");
 const configuration = new Configuration({
-  apiKey: "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",
+  apiKey: "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",
 })
 const openai = new OpenAIApi(configuration);
 client.on('ready', () => {
