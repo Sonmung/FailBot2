@@ -9,7 +9,7 @@ const rest = new REST({ version: '10' }).setToken(TOKEN)
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 const { Configuration, OpenAIApi } = require("openai");
 const configuration = new Configuration({
-  apiKey: "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",
+  apiKey: "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",
 })
 const openai = new OpenAIApi(configuration);
 client.on('ready', () => {
@@ -53,7 +53,6 @@ client.on("interactionCreate", async(interaction) => {
 
   // ai img
   if(interaction.commandName === 'img'){
-    
     try {
        let txt = interaction.options.getString('request')
        await interaction.deferReply();
@@ -65,7 +64,6 @@ client.on("interactionCreate", async(interaction) => {
        let imageUrl = result.data.data[0].url;
       await interaction.editReply(imageUrl)
     } catch (error) {
-      console.log(error.message);
       await interaction.editReply('Image could not be generated')
     }
     
